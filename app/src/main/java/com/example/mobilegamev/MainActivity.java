@@ -1,6 +1,7 @@
 package com.example.mobilegamev;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -8,15 +9,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView iv; //다트 이미지
-    FrameLayout frameLayout; //다트를 다루는 frameLayout
+    FrameLayout frameLayout;
+    LinearLayout targetView; //다트를 다루는 frameLayout
     GestureDetector gestureDetector; //다트 움직임 이벤트 처리
     Handler handler;
 
@@ -30,13 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         frameLayout = findViewById(R.id.fLayout);
+        targetView = findViewById(R.id.targetView);
 
-        iv = new ImageView(this);
-        iv.setRotation(135);
-        iv.setScaleX(0.1f);
-        iv.setScaleY(0.1f);
-        iv.setImageResource(R.drawable.dart);
-        frameLayout.addView(iv);
 
         frameLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -52,8 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler();
         gestureDetector = new GestureDetector(this, new GestureDetector.OnGestureListener() {
+            ImageView iv; //다트 이미지
+
             @Override
-            public boolean onDown(@NonNull MotionEvent e) {return false;}
+            public boolean onDown(@NonNull MotionEvent e) {
+                iv = genImageView(e);
+                frameLayout.addView(iv);
+                return false;
+            }
 
             @Override
             public void onShowPress(@NonNull MotionEvent e) {}
@@ -63,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onScroll(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float distanceX, float distanceY) {
-                iv.setX(e2.getX()- (float) iv.getWidth() /2);
-                iv.setY(e2.getY()- (float) iv.getHeight() /2);
+                iv.setX(e2.getX()- (float) frameLayout.getWidth()/2);
+                iv.setY(e2.getY()- (float) frameLayout.getHeight()/2);
                 return false;
             }
 
@@ -74,14 +76,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
                 Log.d("onFling", velocityX + " " + velocityY);
-                dartAccel((int) velocityY);
+                dartAccel(iv, (int) velocityY);
 
                 return false;
             }
         });
     }
 
-    public Dart dartAccel(int vY){
+    public ImageView genImageView(MotionEvent e){
+        ImageView iv = new ImageView(this);
+        iv.setImageResource(R.drawable.dart);
+        iv.setX(e.getX() - (float) frameLayout.getWidth()/2 );
+        iv.setY(e.getY() - (float) frameLayout.getHeight()/2);
+        iv.setRotation(135);
+        iv.setScaleX(0.1f);
+        iv.setScaleY(0.1f);
+
+        return iv;
+    }
+
+    //최대속도 : 21000
+    //최소 : 160정도
+    public Dart dartAccel(ImageView iv ,int vY){
 
         Runnable act = new Runnable() {
             int vy = Math.abs(vY);
@@ -98,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 vy -= 100;
 
                 if(vy <= 0) handler.removeCallbacks(this);
-                else handler.postDelayed(this, 10);;
+                else handler.postDelayed(this, 10);
             }
         };
 
