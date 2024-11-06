@@ -2,6 +2,7 @@ package com.example.mobilegamev;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -15,6 +16,8 @@ public class InitActivity extends AppCompatActivity {
 
     Button btnStartGame;
     TextView initHigh;
+    MediaPlayer mp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,10 @@ public class InitActivity extends AppCompatActivity {
         // 버튼 찾기
         btnStartGame = findViewById(R.id.btn_start_game);
         initHigh = findViewById(R.id.initHigh);
+
+        mp = MediaPlayer.create(this, R.raw.zoyong);
+        mp.start();
+        mp.setLooping(true);
 
 
         SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
@@ -35,6 +42,9 @@ public class InitActivity extends AppCompatActivity {
         btnStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.stop();
+                mp.release();
+
                 // MainActivity로 이동
                 Intent intent = new Intent(InitActivity.this, MainActivity.class);
                 startActivity(intent);

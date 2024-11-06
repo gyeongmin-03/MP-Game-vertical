@@ -3,6 +3,7 @@ package com.example.mobilegamev;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     SoundPool soundPool;
     int sound;
+
+    MediaPlayer mp;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -75,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
         sound = soundPool.load(this,R.raw.ballon,1);
 
+        mp = MediaPlayer.create(this, R.raw.zosim);
+        mp.start();
 
         new CountDownTimer(60*1000, 1000) {
             @Override
@@ -85,9 +90,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                mp.stop();
+                mp.release();
+
                 Intent intent = new Intent(MainActivity.this, restartActivity.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
+
             }
         }.start();
 

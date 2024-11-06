@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:background="#A9F5F2"
         >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
 
 
     <LinearLayout
@@ -52,4 +57,16 @@
             android:textSize="30sp"
             android:text="게임 시작"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bgm : (조용 조용, 조심하지 않으면), 차용운, 공유마당, CC BY"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:layout_gravity="left|bottom"
+            />
+
+
+</FrameLayout>
