@@ -2,6 +2,8 @@ package com.example.mobilegamev;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     int balloonCount = 9;
     int score = 0;
 
-
+    SoundPool soundPool;
+    int sound;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -68,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
         tvScore = findViewById(R.id.tvScore);
         tvTime = findViewById(R.id.tvTime);
+
+        soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
+        sound = soundPool.load(this,R.raw.ballon,1);
+
 
         new CountDownTimer(60*1000, 1000) {
             @Override
@@ -207,6 +214,9 @@ public class MainActivity extends AppCompatActivity {
                                 balloonArr[i].setInvisible();
                                 balloonCount--;
                                 score++;
+
+                                soundPool.play(sound,1,1,0,0,(float)1.2);
+
                                 tvScore.setText("현재 점수 : "+score);
                             }
 
