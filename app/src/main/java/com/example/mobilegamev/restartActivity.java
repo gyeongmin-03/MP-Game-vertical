@@ -14,7 +14,6 @@ public class restartActivity extends AppCompatActivity {
 
     Button btnStartGame;
     TextView currentScore, highScore, tvNew;
-    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +25,6 @@ public class restartActivity extends AppCompatActivity {
         currentScore = findViewById(R.id.currentScore);
         highScore = findViewById(R.id.highScore);
         tvNew = findViewById(R.id.tvNew);
-
-        mp = MediaPlayer.create(this, R.raw.zoyong);
-        mp.start();
-        mp.setLooping(true);
 
         //게임 점수 표시
         Intent intent = getIntent();
@@ -56,12 +51,9 @@ public class restartActivity extends AppCompatActivity {
         btnStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mp.stop();
-                mp.release();
-
-                // MainActivity로 이동
                 Intent intent = new Intent(restartActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

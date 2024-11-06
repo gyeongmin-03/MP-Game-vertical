@@ -16,7 +16,6 @@ public class InitActivity extends AppCompatActivity {
 
     Button btnStartGame;
     TextView initHigh;
-    MediaPlayer mp;
 
 
     @Override
@@ -28,9 +27,6 @@ public class InitActivity extends AppCompatActivity {
         btnStartGame = findViewById(R.id.btn_start_game);
         initHigh = findViewById(R.id.initHigh);
 
-        mp = MediaPlayer.create(this, R.raw.zoyong);
-        mp.start();
-        mp.setLooping(true);
 
 
         SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
@@ -42,12 +38,9 @@ public class InitActivity extends AppCompatActivity {
         btnStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mp.stop();
-                mp.release();
-
-                // MainActivity로 이동
                 Intent intent = new Intent(InitActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

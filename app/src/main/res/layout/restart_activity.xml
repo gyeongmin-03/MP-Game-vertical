@@ -14,23 +14,26 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             >
-
         <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/balloon"
                 android:rotation="-30"
+                android:layout_weight="1"
                 />
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="다트 게임"
+                android:text="풍선\n다트"
                 android:textSize="50sp"
+                android:gravity="center"
+                android:layout_weight="1"
                 />
         <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/dart"
+                android:layout_weight="1"
                 />
 
     </LinearLayout>

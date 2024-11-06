@@ -2,12 +2,15 @@ package com.example.mobilegamev;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, restartActivity.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
-
+                finish();
             }
         }.start();
 
@@ -124,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if(e.getAction() == MotionEvent.ACTION_UP){
                     frameLayout.removeView(iv);
-//                    iv = null;
                 }
 
                 return true;
@@ -134,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
             public void onShowPress(@NonNull MotionEvent e) {
                 if(e.getAction() == MotionEvent.ACTION_UP){
                     frameLayout.removeView(iv);
-//                    iv = null;
                 }
 
             }
@@ -142,20 +143,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onSingleTapUp(@NonNull MotionEvent e) {
                 frameLayout.removeView(iv);
-//                iv = null;
 
                 return true;
             }
 
             @Override
             public boolean onScroll(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float distanceX, float distanceY) {
-//                if(e2.getY() <= (float) frameLayout.getHeight()/2){
-//                    iv.setY((float) frameLayout.getHeight() /2);
-//                }
-//                else {
-//                iv.setY(e2.getY()-50);
-//                }
+                if(e2.getY() <= (float) frameLayout.getHeight()/2){
+                    iv.setY((float) frameLayout.getHeight() /2);
+                }
+                else {
                 iv.setY(e2.getY()-50);
+                }
 
                 iv.setX(e2.getX()-50);
 
@@ -165,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLongPress(@NonNull MotionEvent e) {
                 frameLayout.removeView(iv);
-//                iv = null;
             }
 
             @Override
@@ -182,8 +180,9 @@ public class MainActivity extends AppCompatActivity {
     public void initLocation(){
         float targetX = targetView.getX();
         float targetY = targetView.getY();
+        float size = b1.getWidth();
         for (int i = 0; i< balloonArr.length; i++){
-            balloonArr[i].setLocate(targetX, targetY, i);
+            balloonArr[i].setLocate(targetX, targetY, i, size);
         }
     }
 
@@ -195,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         iv.setLayoutParams(params);
         iv.setX(e.getX()-50);
         iv.setY(e.getY()-50);
+        iv.setColorFilter(Color.parseColor("#ff424242"));
 
         return iv;
     }
@@ -262,13 +262,13 @@ class BalloonLocate{
     ImageView iv;
     Boolean visible = true;
 
-    void setLocate(float x, float y, int num){
+    void setLocate(float x, float y, int num, float size){
         int nx = num % 3;
         int ny = num / 3;
-        sx = x + 20 + 10 + (10+10+270) * nx;
-        dx = x + 20 + 10 + 270 + (10+10+270) * nx;
-        sy = y + 20 + 10 + (10+10+270) * ny;
-        dy = y + 20 + 10 + 270 + (10+10+270) * ny;
+        sx = x + 20 + 10 + (10+10+(int)size) * nx;
+        dx = x + 20 + 10 + (int)size + (10+10+(int)size) * nx;
+        sy = y + 20 + 10 + (10+10+(int)size) * ny;
+        dy = y + 20 + 10 + (int)size + (10+10+(int)size) * ny;
     }
 
     void setInvisible(){
@@ -281,20 +281,3 @@ class BalloonLocate{
         visible = true;
     }
 }
-
-
-/**
- * 프레임 x = getX, y = getY
- *
- * 벌룬1 : x+30~300, y+30~300
- * 벌룬2 : x+320~590, y+30~300
- * 벌룬3 : x+610~880, y+30~300
- *
- * 벌룬4 : x+30~300, y+3f20~590
- * 벌룬5 : x+320~590, y+320~590
- * 벌룬6 : x+610~880, y+320~590
- *
- * 벌룬7 : x+30~300, y+610~880
- * 벌룬8 : x+320~590, y+610~880
- * 벌룬9 : x+610~880, y+610~880
- * */
