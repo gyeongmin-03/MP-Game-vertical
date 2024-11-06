@@ -1,6 +1,8 @@
 package com.example.mobilegamev;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,18 +12,39 @@ import androidx.appcompat.app.AppCompatActivity;
 public class restartActivity extends AppCompatActivity {
 
     Button btnStartGame;
-    TextView score;
+    TextView currentScore, highScore, tvNew;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restart_activity);
 
-        Intent intent = getIntent();
-
         // 버튼 찾기
         btnStartGame = findViewById(R.id.btn_start_game);
-        score = findViewById(R.id.currentScore);
+        currentScore = findViewById(R.id.currentScore);
+        highScore = findViewById(R.id.highScore);
+        tvNew = findViewById(R.id.tvNew);
+
+        //게임 점수 표시
+        Intent intent = getIntent();
+        int cScore = intent.getIntExtra("score", 0);
+        currentScore.setText("점수 : " + cScore);
+
+        //로컬 저장소 생성
+        SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
+
+        //최고 점수 표시
+        int hScore = pref.getInt("highScore", 0);
+        if(cScore > hScore){
+            hScore = cScore;
+            tvNew.setVisibility(View.VISIBLE);
+
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt("highScore", hScore);
+            editor.apply();
+        }
+
+        highScore.setText("최고 점수 : " + hScore);
 
         // 버튼 클릭 이벤트 처리
         btnStartGame.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +55,5 @@ public class restartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        score.setText(Integer.toString(intent.getIntExtra("score", 0)));
     }
 }

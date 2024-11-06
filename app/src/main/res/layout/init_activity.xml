@@ -2,10 +2,21 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#0389FE"
+        >
 
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최고 점수 : "
+            android:id="@+id/initHigh"
+            />
     <Button
+            android:layout_marginTop="50dp"
             android:id="@+id/btn_start_game"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

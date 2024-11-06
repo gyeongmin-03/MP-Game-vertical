@@ -187,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
     //최소 : 160정도
     public void dartAccel(ImageView iv ,int vY){
 
-
         Runnable act = new Runnable() {
             int vy = Math.abs(vY);
 
