@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="new"
                 android:background="#ffff00"
+                android:textSize="25sp"
                 android:layout_marginLeft="20dp"
                 android:visibility="gone"
                 android:id="@+id/tvNew"
