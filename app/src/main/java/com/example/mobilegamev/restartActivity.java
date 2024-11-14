@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -25,10 +26,9 @@ public class restartActivity extends AppCompatActivity {
     Button btnStartGame, btnRank; //게임 다시 시작 버튼
     TextView currentScore, highScore, tvNew; //직전 게임 점수, 최고 점수, 최고점수갱신(new) 텍스트뷰
     EditText nickname;
-    View dialogView;
+    LinearLayout rankingLayout;
+    View dialogView, RankingView;
     private FirebaseFirestore db;
-
-    List<dbData> dataList = new ArrayList<dbData>();
 
 
     @Override
@@ -70,6 +70,8 @@ public class restartActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            List<dbData> dataList = new ArrayList<dbData>();
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 dbData data = new dbData();
                                 data.name = document.getId();
@@ -145,23 +147,8 @@ public class restartActivity extends AppCompatActivity {
         btnRank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                db.collection("top100").get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                        dbData data = new dbData();
-                                        data.name = document.getId();
-                                        data.score = Integer.parseInt(document.getString("score"));
-                                        dataList.add(data);
-                                    }
-
-                                }
-                            }
-                        });
-
+                Intent intent = new Intent(restartActivity.this, RankingActivity.class);
+                startActivity(intent);
             }
         });
 
