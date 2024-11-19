@@ -42,6 +42,7 @@ public class ShopActivity extends TabActivity {
 
         tabHost.setCurrentTab(0);
 
+        btnClose = findViewById(R.id.btnClose);
 
         back1 = findViewById(R.id.back1);
         back2 = findViewById(R.id.back2);
