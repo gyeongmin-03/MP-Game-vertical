@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TabHost;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 public class ShopActivity extends TabActivity {
 
@@ -20,6 +17,9 @@ public class ShopActivity extends TabActivity {
     ImageView dartCheck1, dartCheck2, dartCheck3;
     ImageView balloonCheck1, balloonCheck2, balloonCheck3;
     TextView btnClose;
+
+    FrameLayout backgroundShop, dartShop, balloonShop;
+
 
     int selectBack, selectDart, selectBalloon;
 
@@ -44,6 +44,10 @@ public class ShopActivity extends TabActivity {
         tabHost.setCurrentTab(0);
 
         btnClose = findViewById(R.id.btnClose);
+
+        backgroundShop = findViewById(R.id.backgroundShop);
+        dartShop = findViewById(R.id.dartShop);
+        balloonShop = findViewById(R.id.balloonShop);
 
         back1 = findViewById(R.id.back1);
         back2 = findViewById(R.id.back2);
@@ -76,15 +80,22 @@ public class ShopActivity extends TabActivity {
             backCheck1.setVisibility(View.VISIBLE);
             backCheck2.setVisibility(View.INVISIBLE);
             backCheck3.setVisibility(View.INVISIBLE);
+
+            backgroundShop.setBackground(getDrawable(R.drawable.game_background1));
         }
         else if(selectBack == 2){
             backCheck2.setVisibility(View.VISIBLE);
             backCheck1.setVisibility(View.INVISIBLE);
             backCheck3.setVisibility(View.INVISIBLE);
+
+            backgroundShop.setBackground(getDrawable(R.drawable.game_background3));
+
         }else if(selectBack == 3){
             backCheck3.setVisibility(View.VISIBLE);
             backCheck2.setVisibility(View.INVISIBLE);
             backCheck1.setVisibility(View.INVISIBLE);
+            backgroundShop.setBackground(getDrawable(R.drawable.game_background2));
+
         }
 
 
@@ -92,15 +103,21 @@ public class ShopActivity extends TabActivity {
             dartCheck1.setVisibility(View.VISIBLE);
             dartCheck2.setVisibility(View.INVISIBLE);
             dartCheck3.setVisibility(View.INVISIBLE);
+
+            dartShop.setBackground(getDrawable(R.drawable.dart1));
         }
         else if(selectDart == 2){
             dartCheck2.setVisibility(View.VISIBLE);
             dartCheck1.setVisibility(View.INVISIBLE);
             dartCheck3.setVisibility(View.INVISIBLE);
+
+            dartShop.setBackground(getDrawable(R.drawable.dart2));
+
         }else if(selectDart == 3){
             dartCheck3.setVisibility(View.VISIBLE);
             dartCheck2.setVisibility(View.INVISIBLE);
             dartCheck1.setVisibility(View.INVISIBLE);
+            dartShop.setBackground(getDrawable(R.drawable.dart3));
         }
 
 
@@ -109,15 +126,21 @@ public class ShopActivity extends TabActivity {
             balloonCheck1.setVisibility(View.VISIBLE);
             balloonCheck2.setVisibility(View.INVISIBLE);
             balloonCheck3.setVisibility(View.INVISIBLE);
+
+            balloonShop.setBackground(getDrawable(R.drawable.balloon1));
         }
         else if(selectBalloon == 2){
             balloonCheck2.setVisibility(View.VISIBLE);
             balloonCheck1.setVisibility(View.INVISIBLE);
             balloonCheck3.setVisibility(View.INVISIBLE);
+            balloonShop.setBackground(getDrawable(R.drawable.balloon2));
+
         }else if(selectBalloon == 3){
             balloonCheck3.setVisibility(View.VISIBLE);
             balloonCheck2.setVisibility(View.INVISIBLE);
             balloonCheck1.setVisibility(View.INVISIBLE);
+            balloonShop.setBackground(getDrawable(R.drawable.balloon3));
+
         }
 
 
@@ -129,6 +152,8 @@ public class ShopActivity extends TabActivity {
                 backCheck2.setVisibility(View.INVISIBLE);
                 backCheck3.setVisibility(View.INVISIBLE);
                 selectBack = 1;
+
+                backgroundShop.setBackground(getDrawable(R.drawable.game_background1));
             }
         });
 
@@ -139,6 +164,8 @@ public class ShopActivity extends TabActivity {
                 backCheck1.setVisibility(View.INVISIBLE);
                 backCheck3.setVisibility(View.INVISIBLE);
                 selectBack = 2;
+
+                backgroundShop.setBackground(getDrawable(R.drawable.game_background3));
             }
         });
 
@@ -149,6 +176,8 @@ public class ShopActivity extends TabActivity {
                 backCheck2.setVisibility(View.INVISIBLE);
                 backCheck1.setVisibility(View.INVISIBLE);
                 selectBack = 3;
+
+                backgroundShop.setBackground(getDrawable(R.drawable.game_background2));
             }
         });
 
@@ -160,6 +189,8 @@ public class ShopActivity extends TabActivity {
                 dartCheck2.setVisibility(View.INVISIBLE);
                 dartCheck3.setVisibility(View.INVISIBLE);
                 selectDart = 1;
+                dartShop.setBackground(getDrawable(R.drawable.dart1));
+
             }
         });
 
@@ -170,6 +201,7 @@ public class ShopActivity extends TabActivity {
                 dartCheck1.setVisibility(View.INVISIBLE);
                 dartCheck3.setVisibility(View.INVISIBLE);
                 selectDart = 2;
+                dartShop.setBackground(getDrawable(R.drawable.dart2));
             }
         });
 
@@ -180,6 +212,7 @@ public class ShopActivity extends TabActivity {
                 dartCheck2.setVisibility(View.INVISIBLE);
                 dartCheck1.setVisibility(View.INVISIBLE);
                 selectDart = 3;
+                dartShop.setBackground(getDrawable(R.drawable.dart3));
             }
         });
 
@@ -191,6 +224,7 @@ public class ShopActivity extends TabActivity {
                 balloonCheck2.setVisibility(View.INVISIBLE);
                 balloonCheck3.setVisibility(View.INVISIBLE);
                 selectBalloon = 1;
+                balloonShop.setBackground(getDrawable(R.drawable.balloon1));
             }
         });
 
@@ -201,6 +235,7 @@ public class ShopActivity extends TabActivity {
                 balloonCheck1.setVisibility(View.INVISIBLE);
                 balloonCheck3.setVisibility(View.INVISIBLE);
                 selectBalloon = 2;
+                balloonShop.setBackground(getDrawable(R.drawable.balloon2));
             }
         });
 
@@ -211,6 +246,7 @@ public class ShopActivity extends TabActivity {
                 balloonCheck2.setVisibility(View.INVISIBLE);
                 balloonCheck1.setVisibility(View.INVISIBLE);
                 selectBalloon = 3;
+                balloonShop.setBackground(getDrawable(R.drawable.balloon3));
             }
         });
 

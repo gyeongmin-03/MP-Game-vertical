@@ -39,7 +39,7 @@ public class InitActivity extends AppCompatActivity {
         //코인 동기화
         Coin coin = Coin.getInstance();
         coin.setCoin(pref.getInt("coin", 0));
-        initHigh.setText("코인 : " + coin.getCoin());
+        initCoin.setText("코인 : " + coin.getCoin());
 
 
         // 버튼 클릭 이벤트

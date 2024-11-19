@@ -1,6 +1,8 @@
 package com.example.mobilegamev;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -21,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    FrameLayout gameBackground;
     FrameLayout frameLayout; //다트가 생성 되는 layout
     LinearLayout targetView; //풍선의 틀
     GestureDetector gestureDetector; //다트 움직임 이벤트 처리
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
     Coin sigleCoin = Coin.getInstance(); //싱글톤 코인 클래스 생성
 
+    int selectBack, selectDart, selectBalloon;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,23 @@ public class MainActivity extends AppCompatActivity {
         //레이아웃의 연결
         frameLayout = findViewById(R.id.fLayout);
         targetView = findViewById(R.id.targetView);
+        gameBackground = findViewById(R.id.gameBackground);
+
+        SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
+        selectBack = pref.getInt("back", 1);
+        selectDart = pref.getInt("dart", 1);
+        selectBalloon = pref.getInt("balloon", 1);
+        if(selectBack == 1){
+            gameBackground.setBackground(getDrawable(R.drawable.game_background1));
+        }
+        else if(selectBack == 2){
+            gameBackground.setBackground(getDrawable(R.drawable.game_background3));
+        }
+        else if(selectBack == 3){
+            gameBackground.setBackground(getDrawable(R.drawable.game_background2));
+        }
+
+
 
         //BalloonLocate 객체 초기화
         for (int i = 0; i< balloonArr.length; i++){
@@ -74,6 +97,19 @@ public class MainActivity extends AppCompatActivity {
         balloonArr[6].iv = (b6 = findViewById(R.id.balloon6));
         balloonArr[7].iv = (b7 = findViewById(R.id.balloon7));
         balloonArr[8].iv = (b8 = findViewById(R.id.balloon8));
+
+        for (int i = 0; i< balloonArr.length; i++){
+            if(selectBalloon == 1){
+                balloonArr[i].iv.setImageDrawable(getDrawable(R.drawable.balloon1));
+            }
+            else if (selectBalloon == 2){
+                balloonArr[i].iv.setImageDrawable(getDrawable(R.drawable.balloon2));
+            }
+            else if(selectBalloon == 3){
+                balloonArr[i].iv.setImageDrawable(getDrawable(R.drawable.balloon3));
+            }
+        }
+
 
         //텍스트뷰 연결
         tvScore = findViewById(R.id.tvScore);
@@ -206,13 +242,21 @@ public class MainActivity extends AppCompatActivity {
     //다트이미지 생성 및 속성 초기화
     public ImageView genImageView(MotionEvent e){
         ImageView iv = new ImageView(this);
-        iv.setImageResource(R.drawable.dart);
+        if(selectDart == 1){
+            iv.setImageResource(R.drawable.dart1);
+            iv.setColorFilter(Color.parseColor("#ff424242"));
+        }
+        else if(selectDart == 2){
+            iv.setImageResource(R.drawable.dart2);
+        }
+        else if(selectDart == 3){
+            iv.setImageResource(R.drawable.dart3);
+        }
         iv.setRotation(135);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
         iv.setLayoutParams(params);
         iv.setX(e.getX()-50);
         iv.setY(e.getY()-50);
-        iv.setColorFilter(Color.parseColor("#ff424242"));
 
         return iv;
     }

@@ -17,7 +17,7 @@
         <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/balloon"
+                android:src="@drawable/balloon1"
                 android:rotation="-30"
                 android:layout_weight="1"
                 />
@@ -32,7 +32,7 @@
         <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/dart"
+                android:src="@drawable/dart1"
                 android:layout_weight="1"
                 />
 

@@ -66,7 +66,7 @@ public class restartActivity extends AppCompatActivity {
 
         //코인 설정 및 저장
         int newCoin = Coin.getInstance().getCoin();
-        currentCoin.setText(newCoin);
+        currentCoin.setText("코인 : " + newCoin);
         editor.putInt("coin", newCoin);
         editor.apply();
 
