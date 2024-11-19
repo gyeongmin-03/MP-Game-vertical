@@ -14,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class InitActivity extends AppCompatActivity {
 
     Button btnStartGame; //게임 시작 버튼
+    Button btnOpenShop; //상점 이동 버튼
     TextView initHigh; //최고 점수 textview
+    TextView initCoin;
 
 
     @Override
@@ -23,8 +25,10 @@ public class InitActivity extends AppCompatActivity {
         setContentView(R.layout.init_activity);
 
         //레이아웃 연결
-        btnStartGame = findViewById(R.id.btn_start_game);
+        btnStartGame = findViewById(R.id.btnStartGame);
+        btnOpenShop = findViewById(R.id.btnOpenShop);
         initHigh = findViewById(R.id.initHigh);
+        initCoin = findViewById(R.id.initCoin);
 
         //내부DB 생성
         SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
@@ -32,6 +36,10 @@ public class InitActivity extends AppCompatActivity {
         //최고 점수 동기화
         initHigh.setText("최고 점수 : " + pref.getInt("highScore", 0));
 
+        //코인 동기화
+        Coin coin = Coin.getInstance();
+        coin.setCoin(pref.getInt("coin", 0));
+        initHigh.setText("코인 : " + coin.getCoin());
 
 
         // 버튼 클릭 이벤트
@@ -44,5 +52,17 @@ public class InitActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        //상점으로 이동
+        btnOpenShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InitActivity.this, ShopActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

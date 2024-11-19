@@ -24,10 +24,9 @@ import java.util.*;
 public class restartActivity extends AppCompatActivity {
 
     Button btnStartGame, btnRank; //게임 다시 시작 버튼
-    TextView currentScore, highScore, tvNew; //직전 게임 점수, 최고 점수, 최고점수갱신(new) 텍스트뷰
+    TextView currentScore, highScore, tvNew, currentCoin; //직전 게임 점수, 최고 점수, 최고점수갱신(new) 텍스트뷰
     EditText nickname;
-    LinearLayout rankingLayout;
-    View dialogView, RankingView;
+    View dialogView;
     private FirebaseFirestore db;
 
 
@@ -42,6 +41,10 @@ public class restartActivity extends AppCompatActivity {
         currentScore = findViewById(R.id.currentScore);
         highScore = findViewById(R.id.highScore);
         tvNew = findViewById(R.id.tvNew);
+        currentCoin = findViewById(R.id.currentCoin);
+
+
+
 
         //intent에서 직전 게임 점수 추출
         Intent intent = getIntent();
@@ -50,17 +53,22 @@ public class restartActivity extends AppCompatActivity {
 
         //내부DB 생성
         SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
         
         int hScore = pref.getInt("highScore", 0); //DB의 최고점수
         if(cScore > hScore){ //직전 게임 결과가 DB의 기록된 최고점수보다 높으면 갱신
             hScore = cScore;
             tvNew.setVisibility(View.VISIBLE);
 
-            SharedPreferences.Editor editor = pref.edit();
             editor.putInt("highScore", hScore);
-            editor.apply();
         }
         highScore.setText("최고 점수 : " + hScore);
+
+        //코인 설정 및 저장
+        int newCoin = Coin.getInstance().getCoin();
+        currentCoin.setText(newCoin);
+        editor.putInt("coin", newCoin);
+        editor.apply();
 
 
         //파이어베이스 db

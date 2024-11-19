@@ -46,7 +46,15 @@
     </LinearLayout>
 
     <TextView
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="코인 : "
+            android:textSize="25sp"
+            android:id="@+id/initCoin"
+        />
+    <TextView
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="최고 점수 : "
@@ -54,12 +62,20 @@
             android:id="@+id/initHigh"
             />
     <Button
-            android:layout_marginTop="100dp"
-            android:id="@+id/btn_start_game"
+            android:layout_marginTop="70dp"
+            android:id="@+id/btnStartGame"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="게임 시작"/>
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/btnOpenShop"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="상점 이동"
+                />
 
     </LinearLayout>
 

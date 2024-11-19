@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <TabHost
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@android:id/tabhost"
+            >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="8"
+                    android:id="@android:id/tabcontent"
+                    >
+
+                <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/backgroundShop"
+                        android:background="@drawable/game_background"
+                        >
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:orientation="horizontal"
+                            android:layout_gravity="bottom"
+                            android:background="#bb808080"
+                            >
+
+
+                        <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                >
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/game_background"
+                                    android:id="@+id/back1"
+                                    />
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="20dp"
+                                    android:src="@drawable/check"
+                                    android:visibility="visible"
+                                    android:id="@+id/backCheck1"
+                                    />
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                >
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@color/gray"
+                                    android:id="@+id/back2"
+                                    />
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="20dp"
+                                    android:src="@drawable/check"
+                                    android:visibility="invisible"
+                                    android:id="@+id/backCheck2"
+                                    />
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                >
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@color/black"
+                                    android:id="@+id/back3"
+                                    />
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="20dp"
+                                    android:src="@drawable/check"
+                                    android:visibility="invisible"
+                                    android:id="@+id/backCheck3"
+                                    />
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/dartShop"
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="7"
+                                >
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="2"
+                                android:background="#bb808080"
+                                android:layout_gravity="bottom"
+                                >
+
+
+                            <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/dart"
+                                        android:id="@+id/dart1"
+                                        />
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="20dp"
+                                        android:src="@drawable/check"
+                                        android:visibility="visible"
+                                        android:id="@+id/dartCheck1"
+                                        />
+                            </FrameLayout>
+
+
+                            <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@color/gray"
+                                        android:id="@+id/dart2"
+                                        />
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="20dp"
+                                        android:src="@drawable/check"
+                                        android:visibility="invisible"
+                                        android:id="@+id/dartCheck2"
+                                        />
+                            </FrameLayout>
+
+
+                            <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@color/black"
+                                        android:id="@+id/dart3"
+                                        />
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="20dp"
+                                        android:src="@drawable/check"
+                                        android:visibility="invisible"
+                                        android:id="@+id/dartCheck3"
+                                        />
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/balloonShop"
+                        >
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="7"
+                                >
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="horizontal"
+                                android:layout_weight="2"
+                                android:layout_gravity="bottom"
+                                android:background="#bb808080"
+                                >
+
+
+                            <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/balloon"
+                                        android:id="@+id/balloon1"
+                                        />
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="20dp"
+                                        android:src="@drawable/check"
+                                        android:visibility="visible"
+                                        android:id="@+id/balloonCheck1"
+                                        />
+                            </FrameLayout>
+
+
+                            <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@color/gray"
+                                        android:id="@+id/balloon2"
+                                        />
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="20dp"
+                                        android:src="@drawable/check"
+                                        android:visibility="invisible"
+                                        android:id="@+id/balloonCheck2"
+                                        />
+                            </FrameLayout>
+
+
+                            <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@color/black"
+                                        android:id="@+id/balloon3"
+                                        />
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="20dp"
+                                        android:src="@drawable/check"
+                                        android:visibility="invisible"
+                                        android:id="@+id/balloonCheck3"
+                                        />
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <TabWidget
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:id="@android:id/tabs">
+            </TabWidget>
+        </LinearLayout>
+    </TabHost>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장 및 나가기"
+            android:layout_gravity="top|left"
+            android:id="@+id/btnClose"
+            />
+</FrameLayout>

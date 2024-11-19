@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout targetView; //풍선의 틀
     GestureDetector gestureDetector; //다트 움직임 이벤트 처리
     Handler handler; //다트 움직임 애니메이션을 위한 핸들러
-    TextView tvScore, tvTime; //현재 점수, 남은 시간
+    TextView tvScore, tvTime, tvCoin; //현재 점수, 남은 시간, 획득 코인
     ImageView b0, b1, b2, b3, b4, b5, b6, b7, b8; //풍선
     BalloonLocate bl0, bl1, bl2, bl3, bl4, bl5, bl6, bl7, bl8; //풍선 위치 및 visible 상태
     BalloonLocate balloonArr[] = {bl0, bl1, bl2, bl3, bl4, bl5, bl6, bl7, bl8};
@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     MediaPlayer mp; //bgm 표현
 
+    int coin = 0; //획득 코인
+
+    Coin sigleCoin = Coin.getInstance(); //싱글톤 코인 클래스 생성
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         //텍스트뷰 연결
         tvScore = findViewById(R.id.tvScore);
         tvTime = findViewById(R.id.tvTime);
+        tvCoin = findViewById(R.id.tvCoin);
+
 
         //풍선 효과음 생성
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
@@ -244,6 +249,13 @@ public class MainActivity extends AppCompatActivity {
                                 soundPool.play(sound,1,1,0,0,(float)1.2); //풍선 터트리기 효과음
 
                                 tvScore.setText("현재 점수 : "+score); //점수 textView 갱신
+
+                                if(Math.random() <= 0.5 ){ //50% 확률로 코인 획득
+                                    coin++;
+                                    tvCoin.setText("획득 코인 : "+coin);
+                                    sigleCoin.addCoin(1);
+                                }
+
                             } //if(balloonArr[i].visible)
 
                             //만약 풍선이 모두 터졌으면
