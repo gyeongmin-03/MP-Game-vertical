@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ShopActivity extends TabActivity {
 
@@ -124,6 +125,9 @@ public class ShopActivity extends TabActivity {
         back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                backCheck1.setVisibility(View.VISIBLE);
+                backCheck2.setVisibility(View.INVISIBLE);
+                backCheck3.setVisibility(View.INVISIBLE);
                 selectBack = 1;
             }
         });
@@ -131,6 +135,9 @@ public class ShopActivity extends TabActivity {
         back2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                backCheck2.setVisibility(View.VISIBLE);
+                backCheck1.setVisibility(View.INVISIBLE);
+                backCheck3.setVisibility(View.INVISIBLE);
                 selectBack = 2;
             }
         });
@@ -138,6 +145,9 @@ public class ShopActivity extends TabActivity {
         back3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                backCheck3.setVisibility(View.VISIBLE);
+                backCheck2.setVisibility(View.INVISIBLE);
+                backCheck1.setVisibility(View.INVISIBLE);
                 selectBack = 3;
             }
         });
@@ -146,6 +156,9 @@ public class ShopActivity extends TabActivity {
         dart1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dartCheck1.setVisibility(View.VISIBLE);
+                dartCheck2.setVisibility(View.INVISIBLE);
+                dartCheck3.setVisibility(View.INVISIBLE);
                 selectDart = 1;
             }
         });
@@ -153,6 +166,9 @@ public class ShopActivity extends TabActivity {
         dart2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dartCheck2.setVisibility(View.VISIBLE);
+                dartCheck1.setVisibility(View.INVISIBLE);
+                dartCheck3.setVisibility(View.INVISIBLE);
                 selectDart = 2;
             }
         });
@@ -160,6 +176,9 @@ public class ShopActivity extends TabActivity {
         dart3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dartCheck3.setVisibility(View.VISIBLE);
+                dartCheck2.setVisibility(View.INVISIBLE);
+                dartCheck1.setVisibility(View.INVISIBLE);
                 selectDart = 3;
             }
         });
@@ -168,6 +187,9 @@ public class ShopActivity extends TabActivity {
         balloon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                balloonCheck1.setVisibility(View.VISIBLE);
+                balloonCheck2.setVisibility(View.INVISIBLE);
+                balloonCheck3.setVisibility(View.INVISIBLE);
                 selectBalloon = 1;
             }
         });
@@ -175,6 +197,9 @@ public class ShopActivity extends TabActivity {
         balloon2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                balloonCheck2.setVisibility(View.VISIBLE);
+                balloonCheck1.setVisibility(View.INVISIBLE);
+                balloonCheck3.setVisibility(View.INVISIBLE);
                 selectBalloon = 2;
             }
         });
@@ -182,6 +207,9 @@ public class ShopActivity extends TabActivity {
         balloon3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                balloonCheck3.setVisibility(View.VISIBLE);
+                balloonCheck2.setVisibility(View.INVISIBLE);
+                balloonCheck1.setVisibility(View.INVISIBLE);
                 selectBalloon = 3;
             }
         });
@@ -190,11 +218,15 @@ public class ShopActivity extends TabActivity {
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //선택사항 저장
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("back", selectBack);
                 editor.putInt("dart", selectDart);
                 editor.putInt("balloon", selectBalloon);
                 editor.apply();
+
+                //저장사실 알림
+                Toast.makeText(ShopActivity.this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
 
                 //첫화면으로 이동
                 Intent intent = new Intent(ShopActivity.this, InitActivity.class);
