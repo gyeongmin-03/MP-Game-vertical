@@ -68,7 +68,7 @@
                             <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/game_background3"
+                                    android:src="@drawable/game_background2"
                                     android:id="@+id/back2"
                                     />
                             <ImageView
@@ -79,6 +79,29 @@
                                     android:visibility="invisible"
                                     android:id="@+id/backCheck2"
                                     />
+
+                            <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/backLock2"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_lock"
+                                        android:padding="20dp"
+                                        />
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="50\n코인"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/yellow"
+                                        android:textSize="20sp"
+                                        android:paddingTop="20dp"
+                                        android:gravity="center"
+                                        />
+                            </FrameLayout>
                         </FrameLayout>
 
 
@@ -91,7 +114,7 @@
                             <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/game_background2"
+                                    android:src="@drawable/game_background3"
                                     android:id="@+id/back3"
                                     />
                             <ImageView
@@ -102,6 +125,28 @@
                                     android:visibility="invisible"
                                     android:id="@+id/backCheck3"
                                     />
+                            <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/backLock3"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_lock"
+                                        android:padding="20dp"
+                                        />
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="100\n코인"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/yellow"
+                                        android:textSize="20sp"
+                                        android:paddingTop="20dp"
+                                        android:gravity="center"
+                                        />
+                            </FrameLayout>
                         </FrameLayout>
 
                     </LinearLayout>
@@ -167,6 +212,29 @@
                                     android:visibility="invisible"
                                     android:id="@+id/dartCheck2"
                                     />
+
+                            <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/dartLock2"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_lock"
+                                        android:padding="20dp"
+                                        />
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="50\n코인"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/yellow"
+                                        android:textSize="20sp"
+                                        android:paddingTop="20dp"
+                                        android:gravity="center"
+                                        />
+                            </FrameLayout>
                         </FrameLayout>
 
 
@@ -190,6 +258,29 @@
                                     android:visibility="invisible"
                                     android:id="@+id/dartCheck3"
                                     />
+
+                            <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/dartLock3"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_lock"
+                                        android:padding="20dp"
+                                        />
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="100\n코인"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/yellow"
+                                        android:textSize="20sp"
+                                        android:paddingTop="20dp"
+                                        android:gravity="center"
+                                        />
+                            </FrameLayout>
                         </FrameLayout>
 
                     </LinearLayout>
@@ -255,6 +346,29 @@
                                     android:visibility="invisible"
                                     android:id="@+id/balloonCheck2"
                                     />
+
+                            <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/balloonLock2"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_lock"
+                                        android:padding="20dp"
+                                        />
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="50\n코인"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/yellow"
+                                        android:textSize="20sp"
+                                        android:paddingTop="20dp"
+                                        android:gravity="center"
+                                        />
+                            </FrameLayout>
                         </FrameLayout>
 
 
@@ -278,6 +392,29 @@
                                     android:visibility="invisible"
                                     android:id="@+id/balloonCheck3"
                                     />
+
+                            <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/balloonLock3"
+                                    >
+                                <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_lock"
+                                        android:padding="20dp"
+                                        />
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="100\n코인"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/yellow"
+                                        android:textSize="20sp"
+                                        android:paddingTop="20dp"
+                                        android:gravity="center"
+                                        />
+                            </FrameLayout>
                         </FrameLayout>
 
                     </LinearLayout>
@@ -300,7 +437,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="저장 및 나가기"
+            android:textSize="20sp"
             android:layout_gravity="top|left"
             android:id="@+id/btnClose"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 코인 : 0"
+            android:background="@color/gray"
+            android:textColor="@color/yellow"
+            android:layout_gravity="top|right"
+            android:id="@+id/shopCoin"
+            android:textSize="20sp"
+            android:padding="10dp"
             />
 </FrameLayout>

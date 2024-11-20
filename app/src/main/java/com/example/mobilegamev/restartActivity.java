@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,7 @@ import java.util.*;
 
 public class restartActivity extends AppCompatActivity {
 
-    Button btnStartGame, btnRank; //게임 다시 시작 버튼
+    Button btnBackInit, btnRank; //게임 다시 시작 버튼
     TextView currentScore, highScore, tvNew, currentCoin; //직전 게임 점수, 최고 점수, 최고점수갱신(new) 텍스트뷰
     EditText nickname;
     View dialogView;
@@ -36,7 +36,7 @@ public class restartActivity extends AppCompatActivity {
         setContentView(R.layout.restart_activity);
 
         //레이아웃 연결
-        btnStartGame = findViewById(R.id.btn_start_game);
+        btnBackInit = findViewById(R.id.btn_back_init);
         btnRank = findViewById(R.id.btn_rank);
         currentScore = findViewById(R.id.currentScore);
         highScore = findViewById(R.id.highScore);
@@ -92,43 +92,74 @@ public class restartActivity extends AppCompatActivity {
                             for (int i = 0; i < dataList.size(); i++){
                                 if(cScore > dataList.get(i).score){
 
-                                    dialogView = (View) View.inflate(restartActivity.this, R.layout.dialog, null);
-                                    AlertDialog.Builder dlg = new AlertDialog.Builder(restartActivity.this);
-                                    dlg.setTitle("랭킹에 등록하시겠습니까?");
-                                    dlg.setView(dialogView);
-                                    dlg.setPositiveButton("입력",
+                                    dialogView = (View) View.inflate(restartActivity.this, R.layout.lank_upload_dialog, null);
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(restartActivity.this);
+                                    builder.setTitle("랭킹에 등록하시겠습니까?");
+                                    builder.setView(dialogView);
+                                    builder.setPositiveButton("입력",
                                             new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    nickname = dialogView.findViewById(R.id.nickname);
-                                                    String nname;
 
-                                                    if(nickname.getText().toString().isEmpty()){
-                                                        nname = "익명" + (int)(Math.random()*100000);
-                                                    }else {
-                                                        nname = nickname.getText().toString();
-                                                    }
-
-                                                    dbData myData = new dbData();
-                                                    myData.name = nname;  //닉네임 입력
-                                                    myData.score = cScore;
-                                                    dataList.add(dataList.size(), myData);
-
-
-                                                    HashMap<String, String> hashMap = new HashMap<String, String>();
-                                                    hashMap.put("score", myData.score+"");
-                                                    db.collection("top100").document(myData.name).set(hashMap);
-
-                                                    if(dataList.size() > 100){
-                                                        String name = dataList.get(0).name;
-                                                        dataList.remove(0);
-                                                        db.collection("top100").document(name).delete();
-                                                    }
                                                 }
                                             });
-                                    dlg.setNegativeButton("취소", null);
-                                    dlg.show();
+                                    builder.setNegativeButton("취소", null);
 
+                                    AlertDialog dialog = builder.create();
+                                    dialog.show();
+
+                                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Boolean dup = false; //닉네임 중복 여부
+                                            nickname = dialogView.findViewById(R.id.nickname);
+                                            String nname;
+
+                                            if(nickname.getText().toString().isEmpty()){
+                                                nname = "익명" + (int)(Math.random()*100000);
+                                            }else {
+                                                nname = nickname.getText().toString();
+                                            }
+
+                                            for(int n = 0; n < dataList.size(); n++){
+                                                if(nname.equals(dataList.get(n).name)){
+                                                    dup = true;
+                                                    break;
+                                                }
+                                                else {
+                                                    dup = false;
+                                                }
+                                            }
+
+                                            if(dup){
+                                                Toast.makeText(restartActivity.this, "중복된 이름입니다.", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                dbData myData = new dbData();
+                                                myData.name = nname;  //닉네임 입력
+                                                myData.score = cScore;
+                                                dataList.add(dataList.size(), myData);
+
+
+                                                HashMap<String, String> hashMap = new HashMap<String, String>();
+                                                hashMap.put("score", myData.score+"");
+                                                db.collection("top100").document(myData.name).set(hashMap);
+
+                                                if(dataList.size() > 100){
+                                                    String name = dataList.get(0).name;
+                                                    dataList.remove(0);
+                                                    db.collection("top100").document(name).delete();
+                                                }
+
+                                                Toast.makeText(restartActivity.this, "랭킹 등록 완료 : " + nname, Toast.LENGTH_LONG).show();
+
+                                                dialog.dismiss();
+                                            }
+                                        }
+                                    });
+
+
+                                    //builder.show();
                                     break;
                                 }
                             }
@@ -141,11 +172,11 @@ public class restartActivity extends AppCompatActivity {
 
 
         //버튼 클릭 이벤트
-        //MainActivity(게임)으로 넘어감
-        btnStartGame.setOnClickListener(new View.OnClickListener() {
+        //initActivity 로 넘어감
+        btnBackInit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(restartActivity.this, MainActivity.class);
+                Intent intent = new Intent(restartActivity.this, InitActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -180,4 +211,5 @@ public class restartActivity extends AppCompatActivity {
 class dbData {
     String name;
     int score;
+    int rank;
 }

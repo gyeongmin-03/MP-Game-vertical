@@ -15,8 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="현재 점수 : 0"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_gravity="top|left"
+            android:padding="10dp"
             />
 
     <TextView
@@ -24,8 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="획득 코인 : 0"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_gravity="top|center_horizontal"
+            android:padding="10dp"
             />
 
     <TextView
@@ -33,9 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="남은 시간 : 0"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_gravity="top|right"
-
+            android:padding="10dp"
             />
 
     <LinearLayout

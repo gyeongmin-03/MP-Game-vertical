@@ -15,8 +15,10 @@ public class InitActivity extends AppCompatActivity {
 
     Button btnStartGame; //게임 시작 버튼
     Button btnOpenShop; //상점 이동 버튼
+    Button btnRankInit; //상점 이동 버튼
     TextView initHigh; //최고 점수 textview
     TextView initCoin;
+
 
 
     @Override
@@ -27,6 +29,7 @@ public class InitActivity extends AppCompatActivity {
         //레이아웃 연결
         btnStartGame = findViewById(R.id.btnStartGame);
         btnOpenShop = findViewById(R.id.btnOpenShop);
+        btnRankInit = findViewById(R.id.btnRankInit);
         initHigh = findViewById(R.id.initHigh);
         initCoin = findViewById(R.id.initCoin);
 
@@ -37,10 +40,21 @@ public class InitActivity extends AppCompatActivity {
         initHigh.setText("최고 점수 : " + pref.getInt("highScore", 0));
 
         //코인 동기화
-        Coin coin = Coin.getInstance();
-        coin.setCoin(pref.getInt("coin", 0));
-        initCoin.setText("코인 : " + coin.getCoin());
+        Coin objCoin = Coin.getInstance();
+        objCoin.setCoin(pref.getInt("coin", 0));
+        initCoin.setText("코인 : " + objCoin.getCoin());
 
+        initCoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putInt("coin", 100);
+                editor.apply();
+
+                objCoin.setCoin(100);
+                initCoin.setText("코인 : " + objCoin.getCoin());
+            }
+        });
 
         // 버튼 클릭 이벤트
         //MainActivity(게임)으로 넘어감
@@ -60,9 +74,18 @@ public class InitActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(InitActivity.this, ShopActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
+
+        btnRankInit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InitActivity.this, RankingActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

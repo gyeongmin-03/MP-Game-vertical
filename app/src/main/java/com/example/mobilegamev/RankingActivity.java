@@ -47,6 +47,7 @@ public class RankingActivity extends AppCompatActivity {
                                 dbData data = new dbData();
                                 data.name = document.getId();
                                 data.score = Integer.parseInt(document.getString("score"));
+                                data.rank = 0;
                                 dataList.add(data);
                             }
 
@@ -65,7 +66,16 @@ public class RankingActivity extends AppCompatActivity {
                                 TextView tvName = new TextView(RankingActivity.this);
                                 TextView tvScore = new TextView(RankingActivity.this);
 
-                                tvNum.setText((i+1)+"위");
+
+                                if(i != 0 && dataList.get(i-1).score == dataList.get(i).score){
+                                    dataList.get(i).rank = dataList.get(i-1).rank;
+                                    tvNum.setText(dataList.get(i).rank + "위");
+                                }
+                                else {
+                                    dataList.get(i).rank = i+1;
+                                    tvNum.setText((i+1)+"위");
+                                }
+
                                 tvName.setText(dataList.get(i).name);
                                 tvScore.setText(dataList.get(i).score+"점");
 

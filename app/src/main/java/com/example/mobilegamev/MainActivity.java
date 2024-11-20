@@ -20,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         targetView = findViewById(R.id.targetView);
         gameBackground = findViewById(R.id.gameBackground);
 
+        //텍스트뷰 연결
+        tvScore = findViewById(R.id.tvScore);
+        tvTime = findViewById(R.id.tvTime);
+        tvCoin = findViewById(R.id.tvCoin);
+
+
         SharedPreferences pref = getSharedPreferences("save", Context.MODE_PRIVATE);
         selectBack = pref.getInt("back", 1);
         selectDart = pref.getInt("dart", 1);
@@ -66,10 +73,13 @@ public class MainActivity extends AppCompatActivity {
             gameBackground.setBackground(getDrawable(R.drawable.game_background1));
         }
         else if(selectBack == 2){
-            gameBackground.setBackground(getDrawable(R.drawable.game_background3));
+            gameBackground.setBackground(getDrawable(R.drawable.game_background2));
         }
         else if(selectBack == 3){
-            gameBackground.setBackground(getDrawable(R.drawable.game_background2));
+            gameBackground.setBackground(getDrawable(R.drawable.game_background3));
+            tvCoin.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.yellow));
+            tvScore.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.yellow));
+            tvTime.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.yellow));
         }
 
 
@@ -111,12 +121,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        //텍스트뷰 연결
-        tvScore = findViewById(R.id.tvScore);
-        tvTime = findViewById(R.id.tvTime);
-        tvCoin = findViewById(R.id.tvCoin);
-
-
         //풍선 효과음 생성
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
         sound = soundPool.load(this,R.raw.ballon,1);
@@ -126,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         mp.start();
 
         //남은시간 타이머 실행 객체
+        //TODO
         new CountDownTimer(10*1000, 1000) {
             @Override
             public void onTick(long s) {
@@ -244,7 +249,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv = new ImageView(this);
         if(selectDart == 1){
             iv.setImageResource(R.drawable.dart1);
-            iv.setColorFilter(Color.parseColor("#ff424242"));
+            if(selectBack == 3){
+                iv.setColorFilter(Color.parseColor("#ffB5A300"));
+            }else {
+                iv.setColorFilter(Color.parseColor("#ff424242"));
+            }
         }
         else if(selectDart == 2){
             iv.setImageResource(R.drawable.dart2);

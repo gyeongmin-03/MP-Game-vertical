@@ -6,6 +6,24 @@
         android:background="#A9F5F2"
         >
 
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="코인 : "
+            android:textSize="25sp"
+            android:id="@+id/initCoin"
+            android:layout_gravity="top|right"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최고 점수 : "
+            android:textSize="25sp"
+            android:id="@+id/initHigh"
+            android:layout_gravity="top|left"
+            />
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -45,37 +63,30 @@
 
     </LinearLayout>
 
-    <TextView
-            android:layout_marginTop="100dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="코인 : "
-            android:textSize="25sp"
-            android:id="@+id/initCoin"
-        />
-    <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="최고 점수 : "
-            android:textSize="25sp"
-            android:id="@+id/initHigh"
-            />
     <Button
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="100dp"
             android:id="@+id/btnStartGame"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="게임 시작"/>
-        <Button
+    <Button
             android:layout_marginTop="20dp"
             android:id="@+id/btnOpenShop"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="상점 이동"
-                />
+            />
+
+    <Button
+            android:id="@+id/btnRankInit"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="랭킹 보기"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            />
 
     </LinearLayout>
 
