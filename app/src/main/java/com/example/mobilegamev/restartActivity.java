@@ -45,7 +45,6 @@ public class restartActivity extends AppCompatActivity {
 
 
 
-
         //intent에서 직전 게임 점수 추출
         Intent intent = getIntent();
         int cScore = intent.getIntExtra("score", 0);

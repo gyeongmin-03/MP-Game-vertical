@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AlertDialog;
 
-import java.util.HashMap;
-
 public class ShopActivity extends TabActivity {
 
     ImageView back1, back2, back3;

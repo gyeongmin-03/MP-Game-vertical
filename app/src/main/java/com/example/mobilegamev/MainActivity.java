@@ -130,8 +130,7 @@ public class MainActivity extends AppCompatActivity {
         mp.start();
 
         //남은시간 타이머 실행 객체
-        //TODO
-        new CountDownTimer(10*1000, 1000) {
+        new CountDownTimer(60*1000, 1000) {
             @Override
             public void onTick(long s) {
                 int sec = (int) s/1000;

@@ -26,6 +26,4 @@ public class Coin {
     public int getCoin(){
         return coin;
     }
-
-
 }

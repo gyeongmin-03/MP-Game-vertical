@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 
 public class InitActivity extends AppCompatActivity {
@@ -53,6 +53,8 @@ public class InitActivity extends AppCompatActivity {
 
                 objCoin.setCoin(100);
                 initCoin.setText("코인 : " + objCoin.getCoin());
+
+                Toast.makeText(InitActivity.this, "테스트용 코인 추가 완료", Toast.LENGTH_SHORT).show();
             }
         });
 
