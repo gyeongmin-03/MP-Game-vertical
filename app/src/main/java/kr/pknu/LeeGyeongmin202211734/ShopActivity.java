@@ -1,4 +1,4 @@
-package com.example.mobilegamev;
+package kr.pknu.LeeGyeongmin202211734;
 
 import android.app.TabActivity;
 import android.content.Context;

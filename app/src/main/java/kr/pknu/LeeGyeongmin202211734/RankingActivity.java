@@ -1,4 +1,4 @@
-package com.example.mobilegamev;
+package kr.pknu.LeeGyeongmin202211734;
 
 import android.graphics.Color;
 import android.os.Bundle;

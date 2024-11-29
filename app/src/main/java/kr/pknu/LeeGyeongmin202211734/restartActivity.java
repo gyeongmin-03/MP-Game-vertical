@@ -1,4 +1,4 @@
-package com.example.mobilegamev;
+package kr.pknu.LeeGyeongmin202211734;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,7 +19,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class restartActivity extends AppCompatActivity {
 

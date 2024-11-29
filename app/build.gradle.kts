@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mobilegamev"
+    namespace = "kr.pknu.LeeGyeongmin202211734"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mobilegamev"
+        applicationId = "kr.pknu.LeeGyeongmin202211734"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

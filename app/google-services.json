@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "837965557826",
-    "project_id": "mobilegame-71599",
-    "storage_bucket": "mobilegame-71599.firebasestorage.app"
+    "project_number": "632877437239",
+    "project_id": "leegyeongmin202211734",
+    "storage_bucket": "leegyeongmin202211734.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:837965557826:android:835ce9d3521966c019fddb",
+        "mobilesdk_app_id": "1:632877437239:android:41574ab040f4c6a21fcab2",
         "android_client_info": {
-          "package_name": "com.example.mobilegamev"
+          "package_name": "kr.pknu.LeeGyeongmin202211734"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB32ao9QoqrhTx_VDpATjCYmMu_4UJGW28"
+          "current_key": "AIzaSyC9l8M_PTZQ41cxCAWDrHoUTJjdaN51YGw"
         }
       ],
       "services": {

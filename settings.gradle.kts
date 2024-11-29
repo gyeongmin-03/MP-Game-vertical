@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MobileGameV"
+rootProject.name = "BalloonDart"
 include(":app")
  

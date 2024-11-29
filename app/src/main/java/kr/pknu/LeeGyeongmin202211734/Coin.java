@@ -1,4 +1,4 @@
-package com.example.mobilegamev;
+package kr.pknu.LeeGyeongmin202211734;
 
 public class Coin {
     private static Coin single_instance = null;

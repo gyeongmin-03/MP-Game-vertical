@@ -5,5 +5,5 @@
          <item name="colorPrimary">@color/gray</item>
     </style>
 
-    <style name="Theme.MobileGameV" parent="Base.Theme.MobileGameV"/>
+    <style name="Theme.BallonDart" parent="Base.Theme.MobileGameV"/>
 </resources>
