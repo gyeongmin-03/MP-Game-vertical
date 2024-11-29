@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int score = 0; //현재 점수
 
     SoundPool soundPool; //풍선 터질 때 효과음 표현 객체
-    int sound; //풍선 터질 때 효과음 
+    int balloonSound, coinSound; //풍선 터질 때 효과음
 
     MediaPlayer mp; //bgm 표현
 
@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
         //풍선 효과음 생성
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
-        sound = soundPool.load(this,R.raw.ballon,1);
+        balloonSound = soundPool.load(this,R.raw.ballon,0);
+        coinSound = soundPool.load(this,R.raw.coin,1);
 
         //bgm 실행
         mp = MediaPlayer.create(this, R.raw.zosim);
@@ -298,14 +299,16 @@ public class MainActivity extends AppCompatActivity {
                                 balloonCount--; //현재 남은 풍선 갯수 감소
                                 score++; //점수 추가
 
-                                soundPool.play(sound,1,1,0,0,(float)1.2); //풍선 터트리기 효과음
-
                                 tvScore.setText("현재 점수 : "+score); //점수 textView 갱신
 
                                 if(Math.random() <= 0.5 ){ //50% 확률로 코인 획득
                                     coin++;
                                     tvCoin.setText("획득 코인 : "+coin);
                                     sigleCoin.addCoin(1);
+                                    soundPool.play(coinSound,1,1,0,0,(float)1.2); //풍선 터트리기 효과음
+                                }
+                                else {
+                                    soundPool.play(balloonSound,1,1,0,0,(float)1.2); //풍선 터트리기 효과음
                                 }
 
                             } //if(balloonArr[i].visible)

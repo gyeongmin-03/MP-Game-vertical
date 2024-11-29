@@ -445,12 +445,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="현재 코인 : 0"
-            android:background="@color/gray"
-            android:textColor="@color/yellow"
+            android:background="#D5D5D5"
+            android:textColor="@color/black"
             android:layout_gravity="top|right"
             android:id="@+id/shopCoin"
             android:textSize="20sp"
-            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
             />
 
 </FrameLayout>
