@@ -48,10 +48,10 @@ public class InitActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putInt("coin", 100);
+                editor.putInt("coin", objCoin.getCoin()+100);
                 editor.apply();
 
-                objCoin.setCoin(100);
+                objCoin.addCoin(100);
                 initCoin.setText("코인 : " + objCoin.getCoin());
 
                 Toast.makeText(InitActivity.this, "테스트용 코인 추가 완료", Toast.LENGTH_SHORT).show();
