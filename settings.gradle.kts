@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BalloonDart"
+rootProject.name = "LeeGyeongmin202211734"
 include(":app")
  
